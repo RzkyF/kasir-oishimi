@@ -89,6 +89,16 @@
                                                     <a href="/user/user_edit/<?= $u['id_user']; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
                                                     <a href="/user/user_hapus/<?= $u['id_user']; ?>" class="btn btn-danger shadow btn-xs sharp tombol-hapus" id="tombol-hapus" name="tombol-hapus"><i class="fa fa-trash"></i></a>
                                                 </div>
+<?php 
+                                $adm = $u['username']; 
+                                if($adm != 'admin') { ?>
+  					  <a href="/user/user_edit/<?= $u['id_user']; ?>" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a> 
+<a href="/user/user_hapus/<?= $u['id_user']; ?>" class="btn btn-danger shadow btn-xs sharp tombol-hapus" id="tombol-hapus" name="tombol-hapus"><i class="fa fa-trash"></i></a>
+
+                                <?php } else { ?>
+                                
+                                <?php } ?>
+
                                             </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -107,3 +117,4 @@
         ***********************************-->
 
 <?= $this->endSection(); ?>
+
