@@ -20,7 +20,7 @@ class KasirFilter implements FilterInterface
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
         // Do something here
-        if (session()->get('id_level') == 2) {
+        if (session()->get('id_level') == 3) {
             return redirect()->to(base_url('home'));
         }
     }

@@ -59,57 +59,94 @@
                     <div class="card-header">
                         <h4 class="card-title">Form Edit Data Users</h4>
                     </div>
-                    <div class="card-body">
-                        <div class="basic-form">
-                            <form action="/user/user_update/<?= $user['id_user']; ?>" method="post" enctype="multipart/form-data">
-                                <?= csrf_field(); ?>
-                                <div class="form-group">
-                                    <input type="hidden" name="id_user" value="<?= $user['id_user']; ?>">
-                                    <input type="hidden" name="fotolama" value="<?= $user['foto']; ?>">
-                                    <label>Nama</label>
-                                    <input type="text" class="form-control input-default <?= ($validation->hasError('nama_user')) ? 'is-invalid' : ''; ?>" name="nama_user" id="nama_user" value="<?= (old('nama_user')) ? old('nama_user') : $user['nama_user']; ?>" placeholder="Masukan Nama Anda">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('nama_user'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input type="text" class="form-control input-default <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" name="username" id="username" value="<?= (old('username')) ? old('username') : $user['username']; ?>" placeholder="Masukan Username Anda">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('username'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="text" class="form-control input-default <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" name="password" id="password" value="<?= (old('password')) ? old('password') : $user['password']; ?>" placeholder="Masukan Password Anda">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('password'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Foto</label>
-                                    <div class="col-sm-2 pb-1">
-                                        <img src="<?= base_url('foto/user/' . $user['foto']); ?>" class="img-thumbnail img-preview" style="max-width: 120px;  ">
-                                    </div>
-                                    <div class="col-sm-8 ">
-                                        <div class="custom-file ">
-                                            <input type="file" class=" custom-file-input <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" id="foto" name="foto">
-                                            <input type="file" class="dropify custom-file-input <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" id="foto" name="foto" style="">
-                                            <div class="invalid-feedback">
-                                                <?= $validation->getError('foto'); ?>
-                                            </div>
-                                            <label class="custom-file-label" for="foto"><?= $user['foto']; ?></label>
+                    <?php if (session()->get('id_level') == 1) { ?>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form action="/user/user_update/<?= $user['id_user']; ?>" method="post" enctype="multipart/form-data">
+                                    <?= csrf_field(); ?>
+                                    <div class="form-group">
+                                        <input type="hidden" name="id_user" value="<?= $user['id_user']; ?>">
+                                        <input type="hidden" name="fotolama" value="<?= $user['foto']; ?>">
+                                        <label>Nama</label>
+                                        <input type="text" class="form-control input-default <?= ($validation->hasError('nama_user')) ? 'is-invalid' : ''; ?>" name="nama_user" id="nama_user" value="<?= (old('nama_user')) ? old('nama_user') : $user['nama_user']; ?>" placeholder="Masukan Nama Anda">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('nama_user'); ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="hidden" name="id_level" id="id_level" class="input" value="3">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control input-default <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" name="username" id="username" value="<?= (old('username')) ? old('username') : $user['username']; ?>" placeholder="Masukan Username Anda">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('username'); ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <button type="button" class="btn btn-secondary" onclick="location.href='<?= base_url('user/user'); ?>'">Batal</button>
-                                <button type="submit" class="btn btn-primary">Ubah</button>
-                            </form>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="text" class="form-control input-default <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" name="password" id="password" value="<?= (old('password')) ? old('password') : $user['password']; ?>" placeholder="Masukan Password Anda">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('password'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Foto</label>
+                                        <div class="col-sm-2 pb-1">
+                                            <img src="<?= base_url('foto/user/' . $user['foto']); ?>" class="img-thumbnail img-preview" style="max-width: 120px;  ">
+                                        </div>
+                                        <div class="col-sm-8 ">
+                                            <div class="custom-file ">
+                                                <input type="file" class=" custom-file-input <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" id="foto" name="foto">
+                                                <input type="file" class="dropify custom-file-input <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" id="foto" name="foto" style="">
+                                                <div class="invalid-feedback">
+                                                    <?= $validation->getError('foto'); ?>
+                                                </div>
+                                                <label class="custom-file-label" for="foto"><?= $user['foto']; ?></label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="id_level" id="id_level" class="input" value="3">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-secondary" onclick="location.href='<?= base_url('user/user'); ?>'">Batal</button>
+                                    <button type="submit" class="btn btn-primary">Ubah</button>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
+
+                    <?php if (session()->get('id_level') == 2) { ?>
+                        <div class="card-body">
+                            <div class="basic-form">
+                                <form action="/user/user_update/<?= $user['id_user']; ?>" method="post" enctype="multipart/form-data">
+                                    <?= csrf_field(); ?>
+                                    <div class="form-group">
+                                        <input type="hidden" name="id_user" value="<?= $user['id_user']; ?>">
+                                        <input type="hidden" name="fotolama" value="<?= $user['foto']; ?>">
+                                        <div class="form-group">
+                                            <label>Foto</label>
+                                            <div class="col-sm-2 pb-1">
+                                                <img src="<?= base_url('foto/user/' . $user['foto']); ?>" class="img-thumbnail img-preview" style="max-width: 120px;  ">
+                                            </div>
+                                            <div class="col-sm-8 ">
+                                                <div class="custom-file ">
+                                                    <input type="file" class=" custom-file-input <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" id="foto" name="foto">
+                                                    <input type="file" class="dropify custom-file-input <?= ($validation->hasError('foto')) ? 'is-invalid' : ''; ?>" id="foto" name="foto" style="">
+                                                    <div class="invalid-feedback">
+                                                        <?= $validation->getError('foto'); ?>
+                                                    </div>
+                                                    <label class="custom-file-label" for="foto"><?= $user['foto']; ?></label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="hidden" name="id_level" id="id_level" class="input" value="3">
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-secondary" onclick="location.href='<?= base_url('user/profile'); ?>'">Batal</button>
+                                        <button type="submit" class="btn btn-primary">Ubah</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php } ?>
+
                 </div>
             </div>
         </div>

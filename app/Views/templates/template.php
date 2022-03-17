@@ -116,15 +116,15 @@
                             </li>
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="<?= base_url('/foto/user/' . session()->get('foto')); ?>" width="20" alt="">
+                                    <img src="<?= base_url('/foto/user/' . session()->get('foto')); ?>" width="20" alt="" class="rounded-circle">
                                     <div class="header-info">
                                         <span><?= session()->get('nama_user') ?></span>
                                         <small><?php if (session()->get('id_level') == 1) {
                                                     echo 'Administrator';
                                                 } elseif (session()->get('id_level') == 2) {
-                                                    echo 'Kasir';
-                                                } elseif (session()->get('id_level') == 3) {
                                                     echo 'Owner';
+                                                } elseif (session()->get('id_level') == 3) {
+                                                    echo 'Kasir';
                                                 } else {
                                                     echo 'Unknown';
                                                 }

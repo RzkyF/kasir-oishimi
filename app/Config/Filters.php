@@ -67,10 +67,16 @@ class Filters extends BaseConfig
             'kasirfilter' => ['except' => [
                 'home', 'home/*',
                 'transaksi', 'transaksi/*',
+                'user', 'user/profile',
+                'user', 'user/user_edit',
+                'user', 'user/user_update',
             ]],
             'ownerfilter' => ['except' => [
                 'home', 'home/*',
                 'transaksi', 'transaksi/*',
+                'user', 'user/profile',
+                'user', 'user/user_edit',
+                'user', 'user/user_update',
             ]],
         ],
     ];

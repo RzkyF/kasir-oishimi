@@ -48,4 +48,12 @@ class User_Model extends Model
     {
         return $this->db->table('user')->update($data, array('id_user' => $id_user));
     }
+    public function profile($id_user)
+    {
+        return $this->db->table('user')->where('id_user', $id_user)->get()->getRowArray();
+    }
+    public function profile_update($data, $id_user)
+    {
+        return $this->db->table('user')->update($data, array('id_user' => $id_user));
+    }
 }
